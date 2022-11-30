@@ -1,0 +1,9 @@
+<div id="container" class="grid place-items-center gap-3 my-6" stagger>
+	<img [defaultImage]="'/assets/icon/kikotalk.png'" [lazyLoad]="''" class="w-40 animate" alt="">
+	<div class="text-2xl font-bold animate">Welcome to KikoTalk!</div>
+	<div class="my-6">
+		<ion-button (click)="goTo('/chats')" class="animate">Chats</ion-button>
+		<ion-button class="animate" (click)="goTo('/login')">Login</ion-button>
+		<ion-button class="animate" (click)="goTo('/signup')">Sign Up</ion-button>
+	</div>
+</div>

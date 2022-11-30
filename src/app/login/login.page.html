@@ -1,0 +1,32 @@
+<center-component class="my-[16px]" display="grid" [text]="true" maxWidth="300px">
+	<ion-text color="secondary">
+		<div class="text-4xl font-bold my-1">KikoTalk</div>
+	</ion-text>
+	<div>
+		Talk with friends and the world around you on KikoTalk.
+	</div>
+	<center-component display="grid">
+		<ion-item-group class="my-[16px]">
+			<ion-item fill="solid">
+				<ion-label position="stacked" >Email</ion-label>
+				<ion-input type="email" placeholder="Email" [formControl]="email" email></ion-input>
+				<ion-note slot="error">Invalid email</ion-note>
+			</ion-item>
+			<ion-item fill="solid">
+				<ion-label position="stacked">Password</ion-label>
+				<ion-input type="password" placeholder="Password"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-button (click)="alertTest()" style="width: 100%;">
+					Log In
+				</ion-button>
+			</ion-item>
+			<ion-item>
+				<div center>Forgot password?</div>
+			</ion-item>
+			<div class="my-[20px]">
+				<ion-button center color="success" (click)="router.navigateByUrl('/signup')">Create Account</ion-button>
+			</div>
+		</ion-item-group>
+	</center-component>
+</center-component>

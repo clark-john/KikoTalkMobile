@@ -1,0 +1,18 @@
+<div class="flex items-center justify-start py-3 gap-4 mx-4">
+  <ion-icon name="chevron-back-outline" class="text-4xl" (click)="navigateTo('/chats')"></ion-icon>
+  <!-- <div class="text-xl"> {{ user?.name }} </div>   -->
+</div>
+
+<img [src]="user?.img" alt="" class="rounded-full object-cover w-[80px] h-[80px] my-3 mx-auto">
+<div class="text-xl text-center"> {{ user?.name }} </div>  
+
+<app-chatbox></app-chatbox>
+<!-- <p>
+  chat works!
+</p>
+<div>
+  id: {{ num }}
+</div>
+<a routerLink="/chats/1">1</a>
+<a routerLink="/chats/4">4</a>
+<a routerLink="/chats/6">6</a> -->

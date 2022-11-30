@@ -1,0 +1,7 @@
+{
+  "name": "KikoTalkMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

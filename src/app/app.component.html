@@ -1,0 +1,12 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title (click)="navigateToIndex()">
+        KikoTalk
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="!overflow-scroll">
+    <ion-router-outlet [class]="margin" [animated]="false"></ion-router-outlet>    
+  </ion-content>
+</ion-app>

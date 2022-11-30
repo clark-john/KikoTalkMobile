@@ -1,0 +1,59 @@
+<center-component class="my-[16px] overflow-y-scroll" display="grid" [text]="true" maxWidth="300px">
+	<ion-text color="secondary">
+		<div class="text-4xl font-bold my-1">KikoTalk</div>
+	</ion-text>
+	<div>
+		Talk with friends and the world around you on KikoTalk.
+	</div>
+	<center-component display="grid" class="bg-[#1E1E1E] my-5">
+		<ion-item-group class="my-[16px]" [formGroup]="formGroup">
+			<ion-item fill="solid">
+				<ion-label position="stacked">Email</ion-label>
+				<ion-input type="email" placeholder="Email" formControlName="email" email></ion-input>
+				<ion-note slot="error">Invalid email</ion-note>
+			</ion-item>
+			<ion-item fill="solid">
+				<ion-label position="stacked">Username</ion-label>
+				<ion-input placeholder="Username"></ion-input>
+			</ion-item>
+			<ion-item fill="solid">
+				<ion-label position="stacked">Password</ion-label>
+				<ion-input [type]="isShowPasswords ? 'text' : 'password'" placeholder="Password" formControlName="password"></ion-input>
+			</ion-item>
+			<ion-item fill="solid">
+				<ion-label position="stacked">Confirm Password</ion-label>
+				<ion-input [type]="isShowPasswords ? 'text' : 'password'" placeholder="Confirm password" formControlName="confirmPass"></ion-input>
+				<ion-note slot="error">{{ confirmPass?.errors?.password }}</ion-note>
+			</ion-item> 
+			<ion-item>
+				<ion-checkbox (ionChange)="checkbox()" slot="start"></ion-checkbox>
+				<ion-label>Show password</ion-label>
+			</ion-item>
+			<div class="divider"></div>
+			<ion-radio-group formControlName="gender">
+				<div class="text-start ml-4 my-3">Gender</div>
+				<ion-item>
+					<ion-label>Male</ion-label>
+					<ion-radio slot="start" value="male"></ion-radio>
+				</ion-item>
+				<ion-item>
+					<ion-label>Female</ion-label>
+					<ion-radio slot="start" value="female"></ion-radio>
+				</ion-item>
+			</ion-radio-group>
+			<div class="divider"></div>
+			<div>
+				<div class="text-start ml-4 my-3">Birthday</div>
+				<ion-button (click)="datePicker()">{{ date }}</ion-button>
+			</div>
+			<div class="divider my-3"></div>
+			<ion-item>
+				<ion-button style="width: 100%;">
+					Create Account
+				</ion-button>
+			</ion-item>
+			<div class="my-[20px]">
+			</div>
+		</ion-item-group>
+	</center-component>
+</center-component>
