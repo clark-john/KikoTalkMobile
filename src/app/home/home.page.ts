@@ -9,7 +9,7 @@ import gsap from 'gsap';
 export class HomePage implements OnInit {
   constructor(private router: Router) {}
   alertTest(): void {
-    alert('Clark johnny sins')
+    alert('Clark johnny sins');
   }
   ngOnInit(): void {
     gsap.from(".animate", {

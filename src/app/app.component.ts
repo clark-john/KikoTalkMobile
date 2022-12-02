@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       } else {
         this.margin = 'm-[10px]';        
       }
-    })
+    });
   }
 
   // customAnimation = (baseEl: any, opts?: any) => {}

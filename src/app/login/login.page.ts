@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
     this.router = r;
   }
   alertTest(){
-    alert("haha")
+    alert("haha");
   }
   ngOnInit() {
   }

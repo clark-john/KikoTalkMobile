@@ -34,15 +34,13 @@
             "prefix": "app",
             "style": "camelCase"
           }
-        ]
+        ],
+        "semi": ["error", "always"]
       }
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {
-        "semi": "error"
-      }
+      "extends": ["plugin:@angular-eslint/template/recommended"]
     }
   ]
 }

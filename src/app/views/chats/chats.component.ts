@@ -51,7 +51,7 @@ export const people: UserChat[] = [
 
 @Component({
   templateUrl: './chats.component.html',
-  styleUrls: ['./chats.component.scss'],
+  // styleUrls: ['./chats.component.scss'],
 })
 export class ChatsComponent implements OnInit {
   platform = Capacitor.getPlatform();
@@ -76,7 +76,7 @@ export class ChatsComponent implements OnInit {
 
   goToChatById(id: number){  
     this.router.navigateByUrl(`/chats/${id}`);
-    navigator.vibrate(100)
+    navigator.vibrate(100);
   }
 
   logoutUser(): void {    
@@ -87,7 +87,7 @@ export class ChatsComponent implements OnInit {
       }).then(() => {});
     } else {
       if (confirm("Are you sure?")) {
-        window.location.href = "/"
+        window.location.href = "/";
       }
     }
   }

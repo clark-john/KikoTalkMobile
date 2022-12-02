@@ -41,9 +41,7 @@ const routes: Routes = [
   {
     path: "chats/:id",
     component: ChatComponent,
-    resolve: {
-      user
-    }
+    resolve: { user }
   },
   {
     path: '**',
