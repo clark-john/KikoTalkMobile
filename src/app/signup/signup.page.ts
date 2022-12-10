@@ -1,12 +1,12 @@
-import { Component//, OnInit 
+import { Component//, OnInit
 } from '@angular/core';
-import { 
+import {
   FormGroup,
-  FormControl, 
-  ValidatorFn, 
-  AbstractControl, 
+  FormControl,
+  ValidatorFn,
+  AbstractControl,
   ValidationErrors,
-  FormBuilder
+  // FormBuilder
   // Validators
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -57,19 +57,19 @@ export class SignupPage {//implements OnInit {
   confirmPass = this.formGroup.get('confirmPass')
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private pickerCtrl: PickerController,
-    private fb: FormBuilder
+    // private fb: FormBuilder
   ) {
     this.formGroup.get("confirmPass")?.setValidators(this.validatePasswords(this.password));
   }
 
   // dayjs object
   dayjs = dayjs;
- 
+
   // boolean value
   isShowPasswords = false;
-  
+
   checkbox(){
     this.isShowPasswords = !this.isShowPasswords;
   }
@@ -156,7 +156,7 @@ export class SignupPage {//implements OnInit {
 
   /*
   ngOnInit(): void {
-  
+
   }
   */
 }

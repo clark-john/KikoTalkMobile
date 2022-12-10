@@ -2,22 +2,25 @@
   <img src="/assets/icon/kikotalk.png" alt="kikotalk" width="33">
   <div class="grid text-center">
     <div class="text-xs">Logged In as</div>
-    <div><!--where to display the currently logged in user-->Clark</div>
+    <div>{{ meData.username }}</div>
   </div>
   <ion-button size="small" (click)="logoutUser()">
     Logout
   </ion-button>
 </div>
-<ion-searchbar placeholder="Search Chats" (ionInput)="testSearchUser($event)"></ion-searchbar>
+<ion-searchbar placeholder="Search Chats" (ionInput)="testSearchUser($event)" class="p-0"></ion-searchbar>
+<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
 <div>
   <div *ngFor="let x of filteredPeople" class="flex chat ion-activatable relative overflow-hidden px-4 py-3 gap-4 items-center" (click)="goToChatById(x.id)">
-    <img alt="" class="rounded-full object-cover w-[50px] h-[50px]" defaultImage="/assets/icon/kikotalk.png" [lazyLoad]="x.img || ''" >
+    <img alt="" [class]="x.invertPicOnDark ? 'dark:invert' : 'dark:invert-0'" class="rounded-full object-cover w-[50px] h-[50px]" defaultImage="/assets/icon/kikotalk.png" [lazyLoad]="x.img || ''" >
     <div class="flex flex-col justify-items-center">
       <div class="text-lg">{{ x.name }}</div>
       <div class="text-ellipsis text-sm" [style]="x.isRead ? null : { fontWeight: 'bold' }">
         {{ x.isSent ? "You: ".concat(x.recentMessage) : x.recentMessage }}
+				<!-- recent message from other conversations not implemented -->
       </div>
     </div>
-    <!-- <ion-ripple-effect></ion-ripple-effect> -->
   </div>
 </div>

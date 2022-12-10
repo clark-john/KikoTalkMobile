@@ -8,5 +8,6 @@ type CanActivateReturn = Observable<boolean | UrlTree> | Promise<boolean | UrlTr
 export class ChatsGuard implements CanActivate {
  	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): CanActivateReturn {
  		return true;
- 	}	
+ 	}
 }
+

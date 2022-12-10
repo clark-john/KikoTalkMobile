@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,17 +34,18 @@ import { ChatComponent } from './views/chat/chat.component';
     ChatboxComponent,
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+		HammerModule
   ],
   providers: [
-    { 
-      provide: RouteReuseStrategy, 
-      useClass: IonicRouteStrategy 
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
     }
   ],
   bootstrap: [AppComponent],

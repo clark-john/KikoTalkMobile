@@ -1,1 +1,31 @@
-<ion-textarea placeholder="Type a message" class="fixed left-0 bottom-0 mx-4"></ion-textarea>
+<div class="fixed left-0 bottom-0 mx-auto flex items-center w-full px-4 gap-3 py-3 justify-center">
+	<ion-icon
+		name="image"
+		class="text-3xl"
+		tabindex="0"
+		(click)="lookForPhotos()"
+	></ion-icon>
+	<ion-textarea
+		placeholder="Type a message"
+		class="border-2 border-white border-solid mt-0 rounded-2xl"
+		[autoGrow]="true"
+		[rows]="1"
+		[formControl]="message"
+	>
+	</ion-textarea>
+	<ion-icon
+		name="send"
+		class="text-2xl"
+		[style]="message.value ? null : { color: '#606060' }"
+		tabindex="0"
+		(click)="message.value ? emitSendMessage() : null"
+	></ion-icon>
+</div>
+<style>
+ion-textarea {
+  --padding-top: 3px;
+  --padding-bottom: 3px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+</style>

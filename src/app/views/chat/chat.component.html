@@ -1,18 +1,25 @@
 <div class="flex items-center justify-start py-3 gap-4 mx-4">
   <ion-icon name="chevron-back-outline" class="text-4xl" (click)="navigateTo('/chats')"></ion-icon>
-  <!-- <div class="text-xl"> {{ user?.name }} </div>   -->
+	<div class="text-lg transition-opacity duration-300" [class]="!isShowName ? 'opacity-0' : 'opacity-100'">{{ user?.name }}</div>
 </div>
 
-<img [src]="user?.img" alt="" class="rounded-full object-cover w-[80px] h-[80px] my-3 mx-auto">
-<div class="text-xl text-center"> {{ user?.name }} </div>  
+<div class="overflow-y-scroll scroll-pb-[3rem] h-[80%] chats">
+	<div class="pb-10">
+		<img [src]="user?.img" alt="" class="rounded-full object-cover w-[80px] h-[80px] my-3 mx-auto">
+		<div class="text-xl text-center"> {{ user?.name }} </div>
+	</div>
 
-<app-chatbox></app-chatbox>
-<!-- <p>
-  chat works!
-</p>
-<div>
-  id: {{ num }}
+	<div class="chats mx-4 grid gap-3">
+		<ng-container *ngIf="!isNull(chats) else loading">
+			<div *ngFor="let x of chats" [class]="meData.id === x.sender_id ? 'justify-self-end bg-blue-600' : 'justify-self-start bg-neutral-500'" class=" w-fit rounded-xl py-1 px-3 max-w-[14rem]">
+				<div class="text-sm">{{ x.sender_username }}</div>
+				<div class="text-lg">{{x.message}}</div>
+			</div>
+		</ng-container>
+		<ng-template #loading>
+			Loading chats...
+		</ng-template>
+	</div>
+
+	<app-chatbox (sendMessage)="receiveMessage($event)"></app-chatbox>
 </div>
-<a routerLink="/chats/1">1</a>
-<a routerLink="/chats/4">4</a>
-<a routerLink="/chats/6">6</a> -->

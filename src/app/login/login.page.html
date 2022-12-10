@@ -6,27 +6,44 @@
 		Talk with friends and the world around you on KikoTalk.
 	</div>
 	<center-component display="grid">
-		<ion-item-group class="my-[16px]">
-			<ion-item fill="solid">
-				<ion-label position="stacked" >Email</ion-label>
-				<ion-input type="email" placeholder="Email" [formControl]="email" email></ion-input>
-				<ion-note slot="error">Invalid email</ion-note>
-			</ion-item>
-			<ion-item fill="solid">
-				<ion-label position="stacked">Password</ion-label>
-				<ion-input type="password" placeholder="Password"></ion-input>
-			</ion-item>
-			<ion-item>
-				<ion-button (click)="alertTest()" style="width: 100%;">
-					Log In
-				</ion-button>
-			</ion-item>
-			<ion-item>
-				<div center>Forgot password?</div>
-			</ion-item>
-			<div class="my-[20px]">
-				<ion-button center color="success" (click)="router.navigateByUrl('/signup')">Create Account</ion-button>
-			</div>
-		</ion-item-group>
+		<form [formGroup]="loginData" onsubmit="return false">
+			<ion-item-group class="my-[16px]">
+				<ion-item fill="solid">
+					<ion-label position="stacked" >Email</ion-label>
+					<ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+
+					<ng-container *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+						<ion-note slot="error">Invalid email</ion-note>
+					</ng-container>
+
+				</ion-item>
+				<ion-item fill="solid">
+					<ion-label position="stacked">Password</ion-label>
+					<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+
+					<ng-container *ngIf="password?.invalid && (password?.touched || password?.dirty)">
+						<ion-note
+							*ngIf="password?.errors?.['password']"
+							slot="error"
+						>
+							{{ password?.errors?.['password'] }}
+						</ion-note>
+						<ion-note *ngIf="password?.errors?.['required']" slot="error">Required</ion-note>
+					</ng-container>
+
+				</ion-item>
+				<ion-item>
+					<ion-button (click)="loginUser()" style="width: 100%;">
+						Log In
+					</ion-button>
+				</ion-item>
+				<ion-item>
+					<div center>Forgot password?</div>
+				</ion-item>
+				<div class="my-[20px]">
+					<ion-button center color="success" (click)="router.navigateByUrl('/signup')">Create Account</ion-button>
+				</div>
+			</ion-item-group>
+		</form>
 	</center-component>
 </center-component>
