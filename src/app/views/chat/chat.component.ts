@@ -5,6 +5,7 @@ import { isNull } from 'lodash';
 import { WS_CHAT_URL } from 'src/app/constants';
 import { UserChat } from '../chats/chats.component';
 import { UserService } from 'src/app/services/user.service';
+// import { PushNotifications } from '@capacitor/push-notifications';
 
 /*
 interface Message {
@@ -28,7 +29,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 	isNull = isNull;
 
   user?: UserChat;
-  chats: {	[key: string]: any }[] | null = null;
+  chats: { [key: string]: any }[] | null = null;
   num?: number;
 	chatElement!: HTMLDivElement;
 	isShowName = false;
@@ -51,7 +52,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 		delete this.wsInterval;
 	}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 		this.meData = this.users.getCurrentUser();
 
 		this.chatElement = this.component.nativeElement.querySelector(".chats") ?? document.createElement("div");
@@ -92,25 +93,32 @@ export class ChatComponent implements OnInit, OnDestroy {
 					chats.reverse();
 					this.chats = chats;
 					this.scrollChat();
-				} else if (chunk.command === 5000){
-					this.chats?.push({
-						message: chunk.message,
-						sender_id: chunk.sender_id
-					});
+				} else if (chunk.command === 5001){
+					this.chats?.push(chunk.message);
+					this.scrollChat();
 				}
-				console.log(chunk.command);
 			};
 			this.ws.onclose = () => {
 				console.log("closed");
 			};
 		}
+
+		/* PushNotifications.requestPermissions().then(result => {
+			if (result.receive === 'granted'){
+				PushNotifications.register();
+			}
+		}) */
   }
 
   receiveMessage(e: string){
 		setTimeout(() => {
-			this.ws.send(JSON.stringify({ command: 5000, message: e }));
+			this.ws.send(JSON.stringify({ command: 5000, message: { message: e, room_id: 2 } }));
 		}, 50);
 		this.scrollChat();
+/*		this.chats?.push({
+			message: "s",
+			sender_id: 47
+		})*/
   }
 
 	scrollChat(){
